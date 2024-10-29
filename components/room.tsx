@@ -13,13 +13,13 @@ interface RoomProps {
   fallback: NonNullable<ReactNode> | null;
 }
 
-export function Room({ children, roomId, fallback, }: RoomProps) {
+export function Room({ children, roomId, fallback }: RoomProps) {
   return (
     <LiveblocksProvider
     authEndpoint="/api/liveblocks-auth"
     >
       <RoomProvider id={roomId}>
-        <ClientSideSuspense fallback={<div>Loading…</div>}>
+        <ClientSideSuspense fallback={fallback}>
           {() => children}
         </ClientSideSuspense>
       </RoomProvider>
