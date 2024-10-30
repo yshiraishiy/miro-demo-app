@@ -15,12 +15,10 @@ interface RoomProps {
 
 export function Room({ children, roomId, fallback }: RoomProps) {
   return (
-    <LiveblocksProvider
-    authEndpoint="/api/liveblocks-auth"
-    >
+    <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
       <RoomProvider id={roomId}>
         <ClientSideSuspense fallback={fallback}>
-          {() => children}
+          <>{children}</>
         </ClientSideSuspense>
       </RoomProvider>
     </LiveblocksProvider>
